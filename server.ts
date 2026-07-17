@@ -117,15 +117,17 @@ function recalculateOrder(state: OrderState, env: Environment, combosSkillActive
   }
 
   // Combine discounts
-  const totalDiscount = parseFloat((discount + bundleCredit).toFixed(2));
-  const subtotalWithDiscount = Math.max(0, subtotal - totalDiscount);
-  const total = parseFloat((subtotalWithDiscount + deliveryFee).toFixed(2));
+  const subtotalWithDiscount = Math.max(0, subtotal - discount - bundleCredit);
+  const tax = parseFloat((subtotalWithDiscount * 0.085).toFixed(2));
+  const total = parseFloat((subtotalWithDiscount + deliveryFee + tax).toFixed(2));
 
   return {
     ...state,
     items,
     deliveryFee,
-    discount: totalDiscount,
+    discount,
+    bundleCredit,
+    tax,
     subtotal: parseFloat(subtotal.toFixed(2)),
     total: parseFloat(total.toFixed(2))
   };

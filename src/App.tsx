@@ -37,6 +37,8 @@ export default function App() {
     appliedCoupon: null,
     deliveryFee: 0,
     discount: 0,
+    bundleCredit: 0,
+    tax: 0,
     subtotal: 0,
     total: 0,
     pickupCode: null
@@ -162,14 +164,16 @@ export default function App() {
         deliveryFee = env.distanceKm > 2.0 ? 4.50 : 2.50;
       }
 
-      const totalDiscount = parseFloat((discount + bundleCredit).toFixed(2));
-      const subtotalWithDiscount = Math.max(0, subtotal - totalDiscount);
-      const total = parseFloat((subtotalWithDiscount + deliveryFee).toFixed(2));
+      const subtotalWithDiscount = Math.max(0, subtotal - discount - bundleCredit);
+      const tax = parseFloat((subtotalWithDiscount * 0.085).toFixed(2));
+      const total = parseFloat((subtotalWithDiscount + deliveryFee + tax).toFixed(2));
 
       return {
         ...prev,
         deliveryFee,
-        discount: totalDiscount,
+        discount,
+        bundleCredit,
+        tax,
         subtotal: parseFloat(subtotal.toFixed(2)),
         total: parseFloat(total.toFixed(2))
       };
@@ -380,6 +384,8 @@ export default function App() {
       appliedCoupon: null,
       deliveryFee: 0,
       discount: 0,
+      bundleCredit: 0,
+      tax: 0,
       subtotal: 0,
       total: 0,
       pickupCode: null

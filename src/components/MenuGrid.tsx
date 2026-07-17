@@ -56,13 +56,13 @@ export const MenuGrid: React.FC<MenuGridProps> = ({ isBreakfast, cart, onAddToCa
           return (
             <div
               key={item.sku}
-              className={`bg-white rounded-2xl border border-slate-100 p-4 flex flex-col md:flex-row gap-4 shadow-sm hover:shadow-md transition-shadow duration-200 relative ${
+              className={`bg-white rounded-2xl border border-slate-100 p-4 flex flex-row gap-4 shadow-sm hover:shadow-md transition-shadow duration-200 relative h-full ${
                 qty > 0 ? "ring-2 ring-blue-600/60 border-blue-600/30" : ""
               }`}
               id={`menu-card-${item.sku}`}
             >
               {/* Image & calories */}
-              <div className="w-full md:w-28 h-28 shrink-0 rounded-xl overflow-hidden relative bg-slate-50 border border-slate-100">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl overflow-hidden relative bg-slate-50 border border-slate-100">
                 <img
                   src={item.image}
                   alt={item.name}
@@ -75,10 +75,10 @@ export const MenuGrid: React.FC<MenuGridProps> = ({ isBreakfast, cart, onAddToCa
               </div>
 
               {/* Text & interactive */}
-              <div className="flex flex-col justify-between flex-1 space-y-2">
+              <div className="flex flex-col justify-between flex-1 min-w-0 space-y-2">
                 <div>
                   <div className="flex justify-between items-start gap-1">
-                    <h4 className="font-semibold text-slate-800 text-sm flex items-center gap-1">
+                    <h4 className="font-semibold text-slate-800 text-sm flex items-center gap-1 truncate">
                       {item.name}
                       {item.sku.includes("BIGMAC") && (
                         <Star className="w-3 h-3 fill-yellow-400 text-yellow-400 shrink-0" />
@@ -92,7 +92,7 @@ export const MenuGrid: React.FC<MenuGridProps> = ({ isBreakfast, cart, onAddToCa
                 </div>
 
                 {/* Macro breakdown */}
-                <div className="flex gap-2 text-[9px] font-semibold text-slate-500 bg-slate-50 p-1.5 rounded-lg border border-slate-100 font-mono">
+                <div className="flex flex-wrap gap-x-2 gap-y-1 text-[9px] font-semibold text-slate-500 bg-slate-50 p-1.5 rounded-lg border border-slate-100 font-mono">
                   <span>蛋白质: {item.protein}g</span>
                   <span className="text-slate-300">•</span>
                   <span>碳水: {item.carbs}g</span>
@@ -101,7 +101,7 @@ export const MenuGrid: React.FC<MenuGridProps> = ({ isBreakfast, cart, onAddToCa
                 </div>
 
                 {/* Inventory / Cart Actions */}
-                <div className="flex justify-between items-center pt-1 border-t border-slate-50 mt-1">
+                <div className="flex flex-wrap justify-between items-center gap-2 pt-1 border-t border-slate-50 mt-1">
                   <span className={`text-[10px] font-mono ${item.stock < 10 ? "text-amber-600 font-bold" : "text-slate-400"}`}>
                     后厨备货: 仅剩 {item.stock} 份
                   </span>

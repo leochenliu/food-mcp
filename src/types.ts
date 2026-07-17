@@ -68,6 +68,8 @@ export interface OrderState {
   appliedCoupon: Coupon | null;
   deliveryFee: number;
   discount: number;
+  bundleCredit: number;
+  tax: number;
   subtotal: number;
   total: number;
   pickupCode: string | null;
