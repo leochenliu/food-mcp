@@ -13,7 +13,7 @@ import { McpConsole } from "./components/McpConsole";
 import { SkillsManager } from "./components/SkillsManager";
 import { AgentChat } from "./components/AgentChat";
 import { BusinessGuide } from "./components/BusinessGuide";
-import { Flame, Brain, Server, Landmark, Sparkles, Star, Github } from "lucide-react";
+import { Flame, Brain, Server, Landmark, Sparkles, Star, Github, MessageSquare, BookOpen } from "lucide-react";
 
 export default function App() {
   // 1. Core Simulator States
@@ -55,6 +55,7 @@ export default function App() {
   ]);
 
   const [isThinking, setIsThinking] = useState(false);
+  const [activeTab, setActiveTab] = useState<"ordering" | "scenarios" | "rules">("ordering");
 
   const isBreakfast = env.timeOfDay < "10:30";
 
@@ -553,49 +554,106 @@ export default function App() {
       {/* Main Dashboard Layout */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        {/* Left 7 Columns: Skills manager, Chat & Menu */}
+        {/* Left 8 Columns: Unified Workspace Window */}
         <div className="lg:col-span-8 space-y-6">
-          
-          {/* Section 0: Interactive Business Operations Playbook */}
-          <section id="business-guide-section">
-            <BusinessGuide
-              onApplyPreset={handleApplyPreset}
-              isBreakfast={isBreakfast}
-              env={env}
-            />
-          </section>
-          
-          {/* Section 1: Brain Skills Manager */}
-          <section id="skills-section">
-            <SkillsManager
-              skills={skills}
-              setSkills={setSkills}
-              activeSkillIds={activeSkillIds}
-              setActiveSkillIds={setActiveSkillIds}
-            />
-          </section>
+          {/* Unified Workspace Tabs Bar */}
+          <div className="bg-white rounded-2xl border border-slate-200 p-3 shadow-sm flex flex-wrap items-center justify-between gap-3 shrink-0" id="unified-workspace-tabs-bar">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
+              <span className="font-display font-bold text-slate-800 text-sm tracking-tight">智能作业工作台</span>
+            </div>
+            
+            <div className="flex items-center p-1 bg-slate-100 rounded-xl border border-slate-200">
+              <button
+                onClick={() => setActiveTab("ordering")}
+                className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                  activeTab === "ordering"
+                    ? "bg-white text-red-600 shadow-xs ring-1 ring-slate-200"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+                id="tab-ordering-btn"
+              >
+                <MessageSquare className="w-3.5 h-3.5" />
+                <span>智能点餐前台</span>
+              </button>
+              
+              <button
+                onClick={() => setActiveTab("scenarios")}
+                className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                  activeTab === "scenarios"
+                    ? "bg-white text-red-600 shadow-xs ring-1 ring-slate-200"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+                id="tab-scenarios-btn"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>业务测试场景</span>
+              </button>
+              
+              <button
+                onClick={() => setActiveTab("rules")}
+                className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                  activeTab === "rules"
+                    ? "bg-white text-red-600 shadow-xs ring-1 ring-slate-200"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+                id="tab-rules-btn"
+              >
+                <Brain className="w-3.5 h-3.5" />
+                <span>智脑规则引擎</span>
+              </button>
+            </div>
+          </div>
 
-          {/* Section 2: Split Chat & Menu Workspace */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6" id="chat-and-menu-split">
-            {/* AI Agent Brain Chat */}
-            <section id="chat-section">
-              <AgentChat
-                messages={messages}
-                onSendMessage={handleSendMessage}
-                isThinking={isThinking}
-                isBreakfast={isBreakfast}
-              />
-            </section>
+          {/* Active Tab Content Frame */}
+          <div className="transition-all duration-300">
+            {activeTab === "ordering" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6" id="chat-and-menu-split">
+                {/* AI Agent Brain Chat */}
+                <section id="chat-section">
+                  <AgentChat
+                    messages={messages}
+                    onSendMessage={handleSendMessage}
+                    isThinking={isThinking}
+                    isBreakfast={isBreakfast}
+                  />
+                </section>
 
-            {/* Menu Grid Catalog */}
-            <section id="catalog-section" className="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
-              <MenuGrid
-                isBreakfast={isBreakfast}
-                cart={orderState.items}
-                onAddToCart={handleAddToCart}
-                onRemoveFromCart={handleRemoveFromCart}
-              />
-            </section>
+                {/* Menu Grid Catalog */}
+                <section id="catalog-section" className="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+                  <MenuGrid
+                    isBreakfast={isBreakfast}
+                    cart={orderState.items}
+                    onAddToCart={handleAddToCart}
+                    onRemoveFromCart={handleRemoveFromCart}
+                  />
+                </section>
+              </div>
+            )}
+
+            {activeTab === "scenarios" && (
+              <section id="business-guide-section">
+                <BusinessGuide
+                  onApplyPreset={(preset) => {
+                    handleApplyPreset(preset);
+                    setActiveTab("ordering"); // Auto-transition back to Ordering Desk so users see the results instantly!
+                  }}
+                  isBreakfast={isBreakfast}
+                  env={env}
+                />
+              </section>
+            )}
+
+            {activeTab === "rules" && (
+              <section id="skills-section">
+                <SkillsManager
+                  skills={skills}
+                  setSkills={setSkills}
+                  activeSkillIds={activeSkillIds}
+                  setActiveSkillIds={setActiveSkillIds}
+                />
+              </section>
+            )}
           </div>
         </div>
 
