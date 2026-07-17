@@ -1,0 +1,7 @@
+# Cloudflare Pages configuration for the food-mcp frontend + API.
+# Deploys the static Vite build (dist/) plus the Pages Function API.
+name = "food-mcp-app"
+pages_build_output_dir = "dist"
+# nodejs_compat is required so the chat handler can read process.env (API key, MCP URL).
+compatibility_date = "2025-07-01"
+compatibility_flags = ["nodejs_compat"]

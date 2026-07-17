@@ -1,0 +1,23 @@
+{
+  "name": "mcd-mcp-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "McDonald's ordering MCP server (real, deployed on Cloudflare Workers).",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "dry-run": "wrangler deploy --dry-run --outdir dist"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "agents": "^0.17.4",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250701.0",
+    "typescript": "^5.5.0",
+    "wrangler": "^4.111.0"
+  }
+}

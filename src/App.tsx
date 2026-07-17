@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Environment, MenuItem, OrderState, McpToolCall, ChatMessage, AgentSkill } from "./types";
 import { INITIAL_SKILLS, MENU_ITEMS } from "./data";
 import { EnvironmentControl } from "./components/EnvironmentControl";
@@ -452,7 +452,8 @@ export default function App() {
     }
   };
 
-  // 4. Send Message to Full-Stack AI Agent (Gemini)
+  // 4. Send Message to Full-Stack AI Agent (MiniMax-M3)
+  const degradedRef = useRef(false);
   const handleSendMessage = async (text: string) => {
     const userMsg: ChatMessage = {
       id: "user_" + Date.now(),
@@ -477,7 +478,12 @@ export default function App() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to contact server-side AI Agent.");
+        let detail = "";
+        try {
+          const errBody = await response.json();
+          if (errBody && errBody.error) detail = `: ${errBody.error}`;
+        } catch { /* ignore parse error */ }
+        throw new Error(`Failed to contact server-side AI Agent${detail}`);
       }
 
       const data = await response.json();
@@ -506,6 +512,20 @@ export default function App() {
       // Merge orderState returned from the backend agent transaction
       if (data.orderState) {
         setOrderState(data.orderState);
+      }
+
+      // One-time notice when the cloud fell back to the local engine
+      if (data.degraded && !degradedRef.current) {
+        degradedRef.current = true;
+        setMessages(prev => [
+          ...prev,
+          {
+            id: "degraded_" + Date.now(),
+            sender: "system",
+            text: `ℹ️ 已切换至本地智能引擎（真实大模型暂不可用${data.degradedReason ? "：" + data.degradedReason : ""}），所有点餐功能不受影响。`,
+            timestamp: new Date().toLocaleTimeString()
+          }
+        ]);
       }
 
     } catch (err: any) {
@@ -702,7 +722,7 @@ export default function App() {
       {/* Footer Branding */}
       <footer className="max-w-7xl mx-auto px-6 mt-12 text-center text-xs text-slate-400 space-y-2 border-t border-slate-200/60 pt-6">
         <p className="flex items-center justify-center gap-1">
-          <Sparkles className="w-3.5 h-3.5 text-blue-600 fill-blue-600/10" /> 麦当劳 AI 智脑微服务点餐系统。基于 React, Vite & Google Gemini API 构建。
+          <Sparkles className="w-3.5 h-3.5 text-blue-600 fill-blue-600/10" /> 麦当劳 AI 智脑微服务点餐系统。基于 React, Vite & MiniMax-M3 API 构建。
         </p>
         <p className="text-[10px]">
           正在模拟 Cloudflare Worker 服务器端点的云端事务流。高安全分布式沙箱隔离环境。

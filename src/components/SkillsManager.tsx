@@ -135,7 +135,7 @@ export const SkillsManager: React.FC<SkillsManagerProps> = ({
           })}
 
           <div className="text-[10px] text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200 leading-normal">
-            💡 <strong>动态校准机制：</strong> 任意关闭或编辑上方的 Markdown 业务规则决策书。Gemini 大脑会立即自我纠正点餐逻辑，无需进行耗时且易断线的代码发布和重新编译！
+            💡 <strong>动态校准机制：</strong> 任意关闭或编辑上方的 Markdown 业务规则决策书。MiniMax 大脑会立即自我纠正点餐逻辑，无需进行耗时且易断线的代码发布和重新编译！
           </div>
         </div>
 

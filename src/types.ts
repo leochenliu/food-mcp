@@ -66,6 +66,7 @@ export interface OrderState {
   status: "idle" | "draft" | "locked" | "paid";
   items: CartItem[];
   appliedCoupon: Coupon | null;
+  isDelivery?: boolean;
   deliveryFee: number;
   discount: number;
   bundleCredit: number;

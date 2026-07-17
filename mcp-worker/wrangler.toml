@@ -1,0 +1,20 @@
+name = "mcd-mcp-server"
+main = "src/index.ts"
+compatibility_date = "2025-07-01"
+workers_dev = true
+# Required: the agents SDK uses Node built-ins (path, async_hooks, etc.)
+compatibility_flags = ["nodejs_compat"]
+
+# McpAgent stores per-session order/cart state inside a Durable Object.
+[durable_objects]
+bindings = [{ name = "MCP_OBJECT", class_name = "McDonaldsMCP" }]
+
+# Migration that registers the Durable Object class on first deploy.
+# McpAgent uses SQLite-backed Durable Objects, so free plans require
+# `new_sqlite_classes` (not `new_classes`).
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["McDonaldsMCP"]
+
+# No authentication by default (anyone can connect).
+# To require login, see Cloudflare Access / OAuth integration.

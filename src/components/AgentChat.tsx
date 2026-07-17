@@ -66,7 +66,7 @@ export const AgentChat: React.FC<AgentChatProps> = ({ messages, onSendMessage, i
         </div>
         
         <span className="text-[10px] px-2 py-0.5 font-mono bg-blue-950/60 border border-blue-850/40 text-blue-400 font-bold rounded-full">
-          GEMINI LITE
+          MINIMAX M3
         </span>
       </div>
 
@@ -156,7 +156,7 @@ export const AgentChat: React.FC<AgentChatProps> = ({ messages, onSendMessage, i
           </div>
         )}
 
-        {/* Gemini Thinking Animation */}
+        {/* MiniMax Thinking Animation */}
         {isThinking && (
           <div className="flex gap-2.5 justify-start">
             <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[10px] text-white font-bold shrink-0 self-end animate-pulse">
