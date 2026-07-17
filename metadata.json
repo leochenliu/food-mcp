@@ -1,0 +1,6 @@
+{
+  "name": "McDonald's Agent Ordering System",
+  "description": "An interactive McDonald's ordering system showing the Brain (Agent Skills for dynamic rules) vs Limbs (TypeScript MCP Server for transactions) architecture with weather simulation, promotion matching, and live MCP execution logs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
