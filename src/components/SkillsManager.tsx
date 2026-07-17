@@ -52,12 +52,12 @@ export const SkillsManager: React.FC<SkillsManagerProps> = ({
       <div className="bg-blue-50/60 p-5 border-b border-slate-200 -mx-5 -mt-5 rounded-t-2xl flex items-center justify-between shrink-0">
         <div>
           <h3 className="font-display font-bold text-blue-900 text-sm tracking-tight flex items-center gap-2">
-            <span>🧠</span> AGENT SKILL LAYER (BRAIN)
+            <span>🧠</span> AI 业务规则引擎 (智脑层)
           </h3>
-          <p className="text-[10px] text-blue-700 font-semibold uppercase tracking-widest mt-0.5">Strategy & Policy Engine</p>
+          <p className="text-[10px] text-blue-700 font-semibold uppercase tracking-widest mt-0.5">策略与优惠券热重载规则库</p>
         </div>
         <span className="px-2 py-0.5 text-[10px] font-mono bg-blue-100 text-blue-700 border border-blue-200 rounded-md font-bold uppercase tracking-wider">
-          Runtime Hot Reload
+          热重载已激活
         </span>
       </div>
 
@@ -94,7 +94,7 @@ export const SkillsManager: React.FC<SkillsManagerProps> = ({
                     <button
                       onClick={(e) => toggleSkill(skill.id, e)}
                       className="text-slate-400 hover:text-slate-600 cursor-pointer focus:outline-none"
-                      title={isActive ? "Disable this rulebook" : "Load this rulebook"}
+                      title={isActive ? "停用此规则书" : "加载此规则书"}
                       id={`toggle-skill-btn-${skill.id}`}
                     >
                       {isActive ? (
@@ -111,15 +111,15 @@ export const SkillsManager: React.FC<SkillsManagerProps> = ({
                     {isActive ? (
                       <>
                         <span className="px-1.5 py-0.5 bg-blue-100 text-[9px] rounded text-blue-700 font-bold uppercase tracking-wider">
-                          ACTIVE
+                          启用中
                         </span>
                         <span className="px-1.5 py-0.5 bg-green-100 text-[9px] rounded text-green-700 font-bold uppercase tracking-wider">
-                          STABLE
+                          稳定
                         </span>
                       </>
                     ) : (
                       <span className="px-1.5 py-0.5 bg-slate-100 text-[9px] rounded text-slate-500 font-bold uppercase tracking-wider">
-                        DRAFT
+                        草案
                       </span>
                     )}
                   </div>
@@ -127,7 +127,7 @@ export const SkillsManager: React.FC<SkillsManagerProps> = ({
                     onClick={(e) => { e.stopPropagation(); setSelectedSkillId(skill.id); }} 
                     className="text-[10px] font-bold text-blue-600 hover:text-blue-800"
                   >
-                    VIEW DETAILS
+                    查看细则
                   </button>
                 </div>
               </div>
@@ -135,7 +135,7 @@ export const SkillsManager: React.FC<SkillsManagerProps> = ({
           })}
 
           <div className="text-[10px] text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200 leading-normal">
-            💡 <strong>Dynamic Calibration:</strong> Disable Coupon Strategy or edit the markdown rules live. Gemini instant-adapts its calculation constraints without a compile loop.
+            💡 <strong>动态校准机制：</strong> 任意关闭或编辑上方的 Markdown 业务规则决策书。Gemini 大脑会立即自我纠正点餐逻辑，无需进行耗时且易断线的代码发布和重新编译！
           </div>
         </div>
 
@@ -152,7 +152,7 @@ export const SkillsManager: React.FC<SkillsManagerProps> = ({
                 className="bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-[10px] px-2 py-1 rounded flex items-center gap-1 cursor-pointer font-semibold shadow-xs"
                 id="edit-skill-content-btn"
               >
-                <Edit3 className="w-3 h-3" /> Edit Rules Markdown
+                <Edit3 className="w-3 h-3" /> 修改 Markdown 规则书
               </button>
             ) : (
               <div className="flex gap-1">
@@ -161,14 +161,14 @@ export const SkillsManager: React.FC<SkillsManagerProps> = ({
                   className="bg-blue-600 hover:bg-blue-700 text-white text-[10px] px-2 py-1 rounded flex items-center gap-1 cursor-pointer font-bold shadow-xs"
                   id="save-skill-content-btn"
                 >
-                  <Save className="w-3 h-3" /> Save Changes
+                  <Save className="w-3 h-3" /> 保存最新规则
                 </button>
                 <button
                   onClick={() => setEditingSkillId(null)}
                   className="bg-white hover:bg-slate-100 border border-slate-200 text-slate-600 text-[10px] px-2 py-1 rounded cursor-pointer font-medium"
                   id="cancel-skill-edit-btn"
                 >
-                  Cancel
+                  取消
                 </button>
               </div>
             )}
@@ -180,7 +180,7 @@ export const SkillsManager: React.FC<SkillsManagerProps> = ({
                 value={tempContent}
                 onChange={(e) => setTempContent(e.target.value)}
                 className="w-full h-full p-2.5 bg-slate-950 text-slate-200 rounded border border-slate-700 focus:outline-none resize-none text-[11px] font-mono"
-                placeholder="Modify markdown rulebook..."
+                placeholder="修改决策逻辑中..."
                 id="edit-skill-textarea"
               />
             ) : (

@@ -57,11 +57,11 @@ export const EnvironmentControl: React.FC<EnvironmentControlProps> = ({ env, set
     <div className="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm space-y-5" id="env-control-container">
       <div className="flex items-center justify-between border-b border-slate-100 pb-3">
         <div>
-          <h3 className="font-display font-semibold text-slate-800 text-lg">Context Simulator</h3>
-          <p className="text-xs text-slate-400">Tweak environmental parameters to test Agent rules</p>
+          <h3 className="font-display font-semibold text-slate-800 text-lg">运行环境模拟器</h3>
+          <p className="text-xs text-slate-400">手动调整环境变量，验证 AI 的业务判断</p>
         </div>
         <span className="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-50 text-slate-600 border border-slate-100 flex items-center gap-1">
-          <CheckCircle className="w-3.5 h-3.5 text-emerald-500 animate-pulse" /> Live State
+          <CheckCircle className="w-3.5 h-3.5 text-emerald-500 animate-pulse" /> 实时状态
         </span>
       </div>
 
@@ -78,7 +78,7 @@ export const EnvironmentControl: React.FC<EnvironmentControlProps> = ({ env, set
           id="toggle-weather-btn"
         >
           <div className="flex items-center justify-between w-full">
-            <span className="text-xs font-semibold uppercase tracking-wider opacity-80">Weather</span>
+            <span className="text-xs font-semibold uppercase tracking-wider opacity-80">天气状况</span>
             {env.weather === "rainy" ? (
               <CloudRain className="w-5 h-5 text-sky-600 animate-bounce" />
             ) : (
@@ -87,10 +87,10 @@ export const EnvironmentControl: React.FC<EnvironmentControlProps> = ({ env, set
           </div>
           <div className="mt-2">
             <span className="text-base font-bold font-display block">
-              {env.weather === "rainy" ? "Rainy 🌧️" : "Sunny ☀️"}
+              {env.weather === "rainy" ? "下雨天 🌧️" : "晴朗天 ☀️"}
             </span>
             <span className="text-[10px] opacity-70">
-              {env.weather === "rainy" ? "Forces Delivery rule" : "Allows Pickup walk"}
+              {env.weather === "rainy" ? "触发外卖配送规则" : "推荐散步自提省外送费"}
             </span>
           </div>
         </button>
@@ -106,15 +106,15 @@ export const EnvironmentControl: React.FC<EnvironmentControlProps> = ({ env, set
           id="toggle-time-btn"
         >
           <div className="flex items-center justify-between w-full">
-            <span className="text-xs font-semibold uppercase tracking-wider opacity-80">Store Menu Hour</span>
+            <span className="text-xs font-semibold uppercase tracking-wider opacity-80">门店菜单时段</span>
             <Clock className="w-5 h-5 text-slate-500" />
           </div>
           <div className="mt-2">
             <span className="text-base font-bold font-display block">
-              {isBreakfast ? "08:30 AM 🥞" : "01:00 PM 🍔"}
+              {isBreakfast ? "上午 08:30 🥞" : "下午 01:00 🍔"}
             </span>
             <span className="text-[10px] opacity-70">
-              {isBreakfast ? "Breakfast Menu Active" : "Regular Lunch Active"}
+              {isBreakfast ? "早餐铁板菜单已上架" : "午正餐菜单已激活"}
             </span>
           </div>
         </button>
@@ -124,10 +124,10 @@ export const EnvironmentControl: React.FC<EnvironmentControlProps> = ({ env, set
       <div className="space-y-2 p-3 bg-slate-50 rounded-xl border border-slate-100">
         <div className="flex justify-between items-center text-xs">
           <span className="font-semibold text-slate-600 flex items-center gap-1">
-            <Navigation className="w-3.5 h-3.5 text-slate-400" /> User Distance to Branch
+            <Navigation className="w-3.5 h-3.5 text-slate-400" /> 用户至最近门店物理距离
           </span>
           <span className="font-mono font-bold text-slate-800 bg-white px-2 py-0.5 rounded border border-slate-100 shadow-sm">
-            {env.distanceKm} km
+            {env.distanceKm} 公里
           </span>
         </div>
         <input
@@ -137,15 +137,15 @@ export const EnvironmentControl: React.FC<EnvironmentControlProps> = ({ env, set
           step="0.1"
           value={env.distanceKm}
           onChange={handleDistanceChange}
-          className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-gold"
+          className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
           id="distance-slider"
         />
         <div className="flex justify-between text-[10px] text-slate-400">
-          <span>Close (0.2km)</span>
+          <span>极其近 (0.2km)</span>
           <span className="font-semibold text-slate-500">
-            {env.distanceKm > 1.5 ? "🔴 Delivery Recommended" : "🟢 Walkable / Pickup ok"}
+            {env.distanceKm > 1.5 ? "🔴 距离较远：建议外卖派送" : "🟢 距离很近：适合步行自提"}
           </span>
-          <span>Far (5km)</span>
+          <span>非常远 (5km)</span>
         </div>
       </div>
 
@@ -153,10 +153,10 @@ export const EnvironmentControl: React.FC<EnvironmentControlProps> = ({ env, set
       <div className="space-y-2.5 p-3.5 bg-yellow-50/50 border border-yellow-100 rounded-xl">
         <div className="flex justify-between items-center text-xs">
           <span className="font-semibold text-slate-700 flex items-center gap-1">
-            <Award className="w-4 h-4 text-brand-gold fill-brand-gold/20" /> Loyalty Reward Points
+            <Award className="w-4 h-4 text-blue-600 fill-blue-600/10" /> 会员消费累计积分
           </span>
           <span className="font-mono font-bold text-yellow-800 bg-white px-2.5 py-0.5 rounded border border-yellow-100 shadow-sm">
-            {env.userPoints} pts
+            {env.userPoints} 分
           </span>
         </div>
         
@@ -166,14 +166,14 @@ export const EnvironmentControl: React.FC<EnvironmentControlProps> = ({ env, set
             className="flex-1 bg-white hover:bg-yellow-50 text-slate-700 hover:text-yellow-800 text-xs py-1.5 px-2 rounded-lg border border-yellow-200 font-medium transition cursor-pointer text-center shadow-sm"
             id="add-points-btn"
           >
-            +100 pts
+            +100 积分
           </button>
           <button
             onClick={() => addPoints(500)}
             className="flex-1 bg-white hover:bg-yellow-50 text-slate-700 hover:text-yellow-800 text-xs py-1.5 px-2 rounded-lg border border-yellow-200 font-medium transition cursor-pointer text-center shadow-sm"
             id="add-500-points-btn"
           >
-            +500 pts
+            +500 积分
           </button>
           <button
             onClick={resetPoints}
@@ -181,18 +181,18 @@ export const EnvironmentControl: React.FC<EnvironmentControlProps> = ({ env, set
             title="Reset points"
             id="reset-points-btn"
           >
-            Reset
+            重置
           </button>
         </div>
 
         {env.userPoints >= 500 ? (
           <div className="text-[10px] text-yellow-800 bg-yellow-100/60 p-1.5 rounded-lg flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-yellow-500 animate-ping"></span>
-            <span>Ready for <strong>FREE Hash Brown</strong> (500 pts exchange active)</span>
+            <span>当前积分达标！可兑换<strong>【免费脆薯饼】</strong> (已激活 500 分兑换权限)</span>
           </div>
         ) : (
           <div className="text-[10px] text-slate-400 flex items-center gap-1">
-            <span>Requires 500 pts for free Hash Brown reward. Add points above!</span>
+            <span>积分达到 500 分即可兑换免费脆薯饼，点击上方按钮加点积分吧！</span>
           </div>
         )}
       </div>
@@ -200,10 +200,10 @@ export const EnvironmentControl: React.FC<EnvironmentControlProps> = ({ env, set
       {/* Safety system rule reminder - styled precisely as the Integrity Guard in the Polish template */}
       <div className="p-3 bg-red-50 rounded-xl border border-red-100">
         <p className="text-[10px] font-bold text-red-700 uppercase tracking-wider flex items-center gap-1">
-          <ShieldAlert className="w-3.5 h-3.5" /> STRICT POLICY ALERT (INTEGRITY GUARD)
+          <ShieldAlert className="w-3.5 h-3.5" /> 🚨 业务合规警示 (规则防篡改保护)
         </p>
         <p className="text-[10px] text-red-600 mt-1 italic leading-tight">
-          The Skill layer cannot generate secure identifiers (order_id). Transaction locks and checkout validations are handled by the TypeScript Server only.
+          AI 智能规则层无权伪造底层安全交易哈希 (order_id)。订单锁定及防穿透资金校验等敏感动作完全由底层 TypeScript 安全沙箱服务端托管。
         </p>
       </div>
     </div>

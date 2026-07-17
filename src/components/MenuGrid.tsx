@@ -35,16 +35,16 @@ export const MenuGrid: React.FC<MenuGridProps> = ({ isBreakfast, cart, onAddToCa
       <div className="flex items-center justify-between border-b border-slate-100 pb-3">
         <div>
           <h3 className="font-display font-semibold text-slate-800 text-lg">
-            {isBreakfast ? "🌅 Breakfast Menu (5:00 - 10:30)" : "🍔 Regular Menu (10:30 - Close)"}
+            {isBreakfast ? "🌅 麦当劳晨光早餐 (上午 5:00 - 10:30)" : "🍔 麦当劳经典正餐 (上午 10:30 - 闭店)"}
           </h3>
           <p className="text-xs text-slate-400">
             {isBreakfast 
-              ? "Breakfast grill is firing hot. Fresh muffins and hotcakes active."
-              : "Lunch and dinner favorites. Big Macs, McSpicys, and crispy nuggets."}
+              ? "早餐铁板正在滚烫运作。新鲜麦满分、脆薯饼及 McCafé 鲜煮咖啡火热供应中。"
+              : "经典午晚餐系列。巨无霸、麦辣鸡腿堡和麦乐鸡拼盘火热销售中。"}
           </p>
         </div>
-        <span className="text-xs font-mono bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded font-bold">
-          MCP CATALOG
+        <span className="text-xs font-mono bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-bold">
+          MCP 商品目录
         </span>
       </div>
 
@@ -57,7 +57,7 @@ export const MenuGrid: React.FC<MenuGridProps> = ({ isBreakfast, cart, onAddToCa
             <div
               key={item.sku}
               className={`bg-white rounded-2xl border border-slate-100 p-4 flex flex-col md:flex-row gap-4 shadow-sm hover:shadow-md transition-shadow duration-200 relative ${
-                qty > 0 ? "ring-2 ring-brand-gold/60 border-brand-gold/30" : ""
+                qty > 0 ? "ring-2 ring-blue-600/60 border-blue-600/30" : ""
               }`}
               id={`menu-card-${item.sku}`}
             >
@@ -70,7 +70,7 @@ export const MenuGrid: React.FC<MenuGridProps> = ({ isBreakfast, cart, onAddToCa
                   referrerPolicy="no-referrer"
                 />
                 <span className="absolute bottom-1 right-1 bg-black/75 backdrop-blur-xs text-[9px] text-white font-semibold py-0.5 px-1.5 rounded flex items-center gap-0.5">
-                  <Flame className="w-2.5 h-2.5 text-orange-400 fill-orange-400" /> {item.calories} kcal
+                  <Flame className="w-2.5 h-2.5 text-orange-400 fill-orange-400" /> {item.calories} 千卡
                 </span>
               </div>
 
@@ -93,17 +93,17 @@ export const MenuGrid: React.FC<MenuGridProps> = ({ isBreakfast, cart, onAddToCa
 
                 {/* Macro breakdown */}
                 <div className="flex gap-2 text-[9px] font-semibold text-slate-500 bg-slate-50 p-1.5 rounded-lg border border-slate-100 font-mono">
-                  <span>Pro: {item.protein}g</span>
+                  <span>蛋白质: {item.protein}g</span>
                   <span className="text-slate-300">•</span>
-                  <span>Carbs: {item.carbs}g</span>
+                  <span>碳水: {item.carbs}g</span>
                   <span className="text-slate-300">•</span>
-                  <span>Fat: {item.fat}g</span>
+                  <span>脂肪: {item.fat}g</span>
                 </div>
 
                 {/* Inventory / Cart Actions */}
                 <div className="flex justify-between items-center pt-1 border-t border-slate-50 mt-1">
                   <span className={`text-[10px] font-mono ${item.stock < 10 ? "text-amber-600 font-bold" : "text-slate-400"}`}>
-                    Stock: {item.stock} left
+                    后厨备货: 仅剩 {item.stock} 份
                   </span>
 
                   {qty > 0 ? (
@@ -129,10 +129,10 @@ export const MenuGrid: React.FC<MenuGridProps> = ({ isBreakfast, cart, onAddToCa
                     <button
                       onClick={() => onAddToCart(item, 1)}
                       disabled={isOutOfStock}
-                      className="bg-brand-gold hover:bg-brand-yellow disabled:bg-slate-100 disabled:text-slate-400 text-slate-900 font-semibold text-xs py-1.5 px-3 rounded-lg flex items-center gap-1 cursor-pointer select-none transition shadow-xs hover:shadow-sm"
+                      className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-100 disabled:text-slate-400 text-white font-semibold text-xs py-1.5 px-3 rounded-lg flex items-center gap-1 cursor-pointer select-none transition shadow-xs hover:shadow-sm"
                       id={`btn-add-${item.sku}`}
                     >
-                      <Plus className="w-3.5 h-3.5" /> Add to Order
+                      <Plus className="w-3.5 h-3.5" /> 加入订单
                     </button>
                   )}
                 </div>

@@ -39,16 +39,16 @@ export const AgentChat: React.FC<AgentChatProps> = ({ messages, onSendMessage, i
   // Prompts adapted dynamically based on morning/lunch hour
   const suggestedPrompts = isBreakfast 
     ? [
-        "I'm hungry, suggest a breakfast combination 🥞",
-        "What is the delivery scenario today? 🌧️",
-        "Redeem a free hash brown for 500 points 🎁",
-        "Checkout the order and generate payment links 💳"
+        "肚子饿了，推荐一份早餐组合 🥞",
+        "今天的配送费怎么算的？ 🌧️",
+        "使用 500 积分兑换免费脆薯饼 🎁",
+        "锁定订单并生成支付链接 💳"
       ]
     : [
-        "Suggest a delicious dinner burger and fries combo 🍔",
-        "Is there a coupon for Big Mac or lunch burgers? 🎟️",
-        "Suggest high protein lunch options 🍗",
-        "Ready to checkout! 💳"
+        "推荐一个好吃的经典巨无霸套餐 🍔",
+        "有巨无霸或午餐汉堡的优惠券吗？ 🎟️",
+        "推荐卡路里低且高蛋白的午餐 🍗",
+        "订单选好了，帮我锁定结账！ 💳"
       ];
 
   return (
@@ -60,8 +60,8 @@ export const AgentChat: React.FC<AgentChatProps> = ({ messages, onSendMessage, i
             <Sparkles className="w-4 h-4 text-white fill-white/20" />
           </div>
           <div>
-            <h3 className="font-display font-bold text-white text-sm">Mickey AI Agent</h3>
-            <p className="text-[10px] text-blue-300 font-semibold uppercase tracking-wider">Powering Skill-Driven Brain</p>
+            <h3 className="font-display font-bold text-white text-sm">Mickey 智能订餐 AI</h3>
+            <p className="text-[10px] text-blue-300 font-semibold uppercase tracking-wider">驱动业务规则的 AI 智脑层</p>
           </div>
         </div>
         
@@ -76,9 +76,9 @@ export const AgentChat: React.FC<AgentChatProps> = ({ messages, onSendMessage, i
           <div className="h-full flex flex-col items-center justify-center text-center text-slate-400 p-6 space-y-3">
             <Sparkles className="w-10 h-10 text-slate-300 animate-bounce" />
             <div className="space-y-1">
-              <p className="text-sm font-semibold text-slate-600">Start Your Ordering Dialogue</p>
+              <p className="text-sm font-semibold text-slate-600">开启您的智能点餐之旅</p>
               <p className="text-xs max-w-xs mx-auto leading-relaxed">
-                Mickey reads your simulated weather, distance, and time parameters, matching rules in active skills, and directs the MCP limbs!
+                Mickey AI 将读取当前的天气、距离及时间变量，结合处于激活状态的业务技能规则，实时调遣并验证分布式 MCP 交易接口！
               </p>
             </div>
           </div>
@@ -123,7 +123,7 @@ export const AgentChat: React.FC<AgentChatProps> = ({ messages, onSendMessage, i
                     {msg.mcpCalls && msg.mcpCalls.length > 0 && (
                       <div className="bg-slate-900 rounded-lg p-2.5 border border-slate-800 font-mono text-[9px] text-slate-300 space-y-1.5 shadow-sm">
                         <span className="text-[8px] font-bold text-emerald-400 uppercase tracking-wider block border-b border-slate-800 pb-1">
-                          🛠️ Fired Decoupled MCP Tools ({msg.mcpCalls.length})
+                          🛠️ 已触发的分布式 MCP 工具 ({msg.mcpCalls.length})
                         </span>
                         {msg.mcpCalls.map(call => {
                           const isSuccess = call.status === "success";
@@ -134,7 +134,7 @@ export const AgentChat: React.FC<AgentChatProps> = ({ messages, onSendMessage, i
                                 <span className="font-bold text-slate-200"> {call.toolName}</span>
                               </span>
                               <span className={isSuccess ? "text-emerald-400 font-bold" : "text-amber-500 font-bold"}>
-                                {isSuccess ? "✓ Success" : "⚠ Sidelined"}
+                                {isSuccess ? "✓ 执行成功" : "⚠ 待审查"}
                               </span>
                             </div>
                           );
@@ -152,6 +152,7 @@ export const AgentChat: React.FC<AgentChatProps> = ({ messages, onSendMessage, i
                 </div>
               );
             })}
+            <div ref={messagesEndRef} />
           </div>
         )}
 
@@ -163,7 +164,7 @@ export const AgentChat: React.FC<AgentChatProps> = ({ messages, onSendMessage, i
             </div>
             <div className="bg-white border border-slate-200 p-3 rounded-2xl rounded-bl-none text-xs text-slate-500 flex items-center gap-2 shadow-xs">
               <RefreshCw className="w-3.5 h-3.5 text-blue-600 animate-spin" />
-              <span>Mickey is analyzing active Skills & calling MCP tools...</span>
+              <span>Mickey 正在匹配业务规则并调用交易工具...</span>
             </div>
           </div>
         )}
@@ -192,8 +193,8 @@ export const AgentChat: React.FC<AgentChatProps> = ({ messages, onSendMessage, i
           disabled={isThinking}
           placeholder={
             isThinking
-              ? "Mickey is thinking..."
-              : `Type a request (e.g., "Add Egg McMuffin and apply best coupon")`
+              ? "Mickey 正在思考中..."
+              : `输入点餐需求（例如：“加一个吉士蛋麦满分，使用最优优惠券”）`
           }
           className="flex-1 text-xs border border-slate-200 hover:border-slate-300 focus:border-blue-600 focus:outline-none rounded-xl px-3.5 py-2.5 bg-slate-50/50 focus:bg-white transition-all"
           id="chat-input-text-field"

@@ -9,11 +9,11 @@ export const MENU_ITEMS: MenuItem[] = [
   // Breakfast category
   {
     sku: "BRK_MCMUFFIN",
-    name: "Egg McMuffin",
+    name: "吉士蛋麦满分",
     category: "breakfast",
     price: 4.50,
     stock: 25,
-    description: "A freshly cracked Grade A egg on a toasted English muffin with savory Canadian bacon and melted American cheese.",
+    description: "新鲜煎制的A级鸡蛋、香烤英式松饼，搭配美味的加拿大风味培根和融化的美式芝士。",
     image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=300&auto=format&fit=crop&q=60",
     calories: 310,
     protein: 17,
@@ -22,11 +22,11 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     sku: "BRK_SAUSAGE_EGG",
-    name: "Sausage McMuffin with Egg",
+    name: "猪肉满分堡加蛋",
     category: "breakfast",
     price: 5.20,
     stock: 18,
-    description: "Sizzling sausage hot off the grill, a freshly cracked Grade A egg, and melty American cheese on a warm, toasted English muffin.",
+    description: "扒炉上滋滋作响的美味猪肉饼、新鲜煎制的A级鸡蛋，以及香浓融化的美式芝士，搭配温热香脆的英式松饼。",
     image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=300&auto=format&fit=crop&q=60",
     calories: 480,
     protein: 21,
@@ -35,11 +35,11 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     sku: "BRK_HOTCAKES",
-    name: "Hotcakes (3 pcs)",
+    name: "美式热香饼 (3片装)",
     category: "breakfast",
     price: 4.80,
     stock: 12,
-    description: "Three golden brown Hotcakes served with real butter and sweet maple-flavored hotcake syrup.",
+    description: "三片金黄诱人的热香饼，搭配纯正黄油和香甜的枫糖风味糖浆。",
     image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=300&auto=format&fit=crop&q=60",
     calories: 580,
     protein: 9,
@@ -48,11 +48,11 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     sku: "BRK_HASHBROWN",
-    name: "Hash Brown",
+    name: "脆薯饼",
     category: "breakfast",
     price: 1.90,
     stock: 45,
-    description: "Crispy, golden brown shredded potato hash brown patty, fried to delicious perfection.",
+    description: "外脆里嫩的金黄碎土豆薯饼，炸至恰到好处的香脆口感。",
     image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&auto=format&fit=crop&q=60",
     calories: 140,
     protein: 1,
@@ -61,11 +61,11 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     sku: "BRK_COFFEE",
-    name: "Premium Roast Coffee",
+    name: "McCafé 鲜煮咖啡 (热)",
     category: "breakfast",
     price: 1.80,
     stock: 80,
-    description: "Brewed from 100% Arabica beans, hot, aromatic, and freshly roasted every 30 minutes.",
+    description: "精选100%阿拉比卡咖啡豆精制而成，口感浓郁，每30分钟新鲜煮制。",
     image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300&auto=format&fit=crop&q=60",
     calories: 5,
     protein: 0,
@@ -76,11 +76,11 @@ export const MENU_ITEMS: MenuItem[] = [
   // Regular category
   {
     sku: "REG_BIGMAC",
-    name: "Big Mac",
+    name: "经典巨无霸汉堡",
     category: "regular",
     price: 6.20,
     stock: 35,
-    description: "Two 100% pure beef patties, special sauce, crisp shredded lettuce, American cheese, pickles, and onions on a toasted sesame seed bun.",
+    description: "两块100%纯牛肉饼、秘制巨无霸酱汁、清脆切丝生菜、美式芝士、酸黄瓜和洋葱，搭配香烤芝麻面包。",
     image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=60",
     calories: 590,
     protein: 25,
@@ -89,11 +89,11 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     sku: "REG_MCNUGGETS",
-    name: "Chicken McNuggets (10 pc)",
+    name: "麦乐鸡 (10块装)",
     category: "regular",
     price: 5.80,
     stock: 30,
-    description: "Tender, juicy Chicken McNuggets made with 100% white meat chicken, with no artificial colors or preservatives.",
+    description: "鲜嫩多汁的麦乐鸡，精选100%白羽鸡肉制成，无人工色素或防腐剂。",
     image: "https://images.unsplash.com/photo-1562967914-608f82629710?w=300&auto=format&fit=crop&q=60",
     calories: 410,
     protein: 23,
@@ -102,11 +102,11 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     sku: "REG_SPICY_CHICKEN",
-    name: "McSpicy Chicken Burger",
+    name: "麦辣鸡腿汉堡",
     category: "regular",
     price: 6.50,
     stock: 20,
-    description: "Thick, crispy chicken thigh meat seasoned with hot chili peppers, fresh lettuce, and creamy mayo on a sesame seed bun.",
+    description: "选用大块多汁的脆炸鸡腿排，经独特辣味配方腌制，搭配新鲜生菜和香浓沙拉酱，美味过瘾。",
     image: "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=300&auto=format&fit=crop&q=60",
     calories: 520,
     protein: 22,
@@ -115,11 +115,11 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     sku: "REG_FRIES",
-    name: "World Famous Fries (L)",
+    name: "经典薯条 (大份)",
     category: "regular",
     price: 3.50,
     stock: 65,
-    description: "Our premium potatoes cut into delicious strips, crispy on the outside and fluffy on the inside, salted to perfection.",
+    description: "优质马铃薯切条，外表金黄香脆，内里绵软，撒上适量食盐，经典美味。",
     image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&auto=format&fit=crop&q=60",
     calories: 480,
     protein: 6,
@@ -128,11 +128,11 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     sku: "REG_COLA",
-    name: "Coca-Cola (M)",
+    name: "可口可乐 (中杯)",
     category: "regular",
     price: 2.20,
     stock: 90,
-    description: "Cold, bubbly, and refreshing original Coca-Cola fountain soda poured over crushed ice.",
+    description: "冰凉爽口、气泡丰富的原味可口可乐，搭配碎冰，畅爽解渴。",
     image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&auto=format&fit=crop&q=60",
     calories: 210,
     protein: 0,
@@ -141,11 +141,11 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     sku: "REG_APPLE_PIE",
-    name: "Baked Apple Pie",
+    name: "经典苹果派",
     category: "regular",
     price: 1.90,
     stock: 15,
-    description: "Warm pastry crust filled with sweet, cinnamon-spiced apple slices, baked to a flaky golden brown.",
+    description: "香温的酥皮包裹着香甜、带有肉桂香气的苹果片，烘烤至金黄酥脆。",
     image: "https://images.unsplash.com/photo-1519869325930-281384150729?w=300&auto=format&fit=crop&q=60",
     calories: 230,
     protein: 2,
@@ -158,8 +158,8 @@ export const INITIAL_COUPONS: Coupon[] = [
   {
     id: "coupon_mcd50",
     code: "MCD50",
-    name: "Mega Family discount",
-    description: "Save $10.00 off orders over $50.00! Perfect for larger groups.",
+    name: "超值家庭套卡满减",
+    description: "订单实付满 $50.00 立减 $10.00！适合家庭与多人聚餐。",
     discountType: "fixed",
     value: 10.00,
     minSpend: 50.00
@@ -167,8 +167,8 @@ export const INITIAL_COUPONS: Coupon[] = [
   {
     id: "coupon_breakfast15",
     code: "MCD_BREAKFAST_15",
-    name: "Breakfast Early Bird 15%",
-    description: "Get 15% off any breakfast item (SKU prefix BRK_). Only valid in Morning.",
+    name: "早餐早鸟特惠 85折",
+    description: "任意早餐单品（SKU以 BRK_ 开头）享受 85 折优惠。仅在上午时段有效。",
     discountType: "percentage",
     value: 0.15,
     minSpend: 5.00,
@@ -178,8 +178,8 @@ export const INITIAL_COUPONS: Coupon[] = [
   {
     id: "coupon_burger20",
     code: "MCD_BURGER_20",
-    name: "Burger Craze 20% Off",
-    description: "Save 20% off any burger (McMuffin, Sausage Egg, Big Mac, McSpicy). No time limit!",
+    name: "汉堡狂欢 8折特惠",
+    description: "所有汉堡单品（麦满分、猪肉堡、巨无霸、麦辣鸡腿堡）均可享受 8 折。无时间限制！",
     discountType: "percentage",
     value: 0.20,
     minSpend: 8.00
@@ -189,99 +189,99 @@ export const INITIAL_COUPONS: Coupon[] = [
 export const INITIAL_SKILLS: AgentSkill[] = [
   {
     id: "skill_scenario",
-    title: "Scenario Selector Policy",
-    description: "Guidelines to recommend Delivery vs In-Store Pickup based on weather, distance, and pricing formulas.",
+    title: "配送与自提推荐规则",
+    description: "根据天气、配送距离及价格计算公式，智能推荐外卖配送或到店自提。",
     category: "scenario",
-    content: `### SCENARIO DECISION MATRIX: DELIVERY VS PICKUP
+    content: `### 配送决策矩阵：外卖配送 vs 到店自提
 
-**Objective**: Recommend the optimal delivery method (Delivery / Pickup) based on context variables (weather, distance to store, delivery surcharge formulas).
+**业务目标**：根据环境变量（天气、门店距离、外送费公式）为客户推荐最佳的配送方式（配送 / 自提）。
 
-**Trigger Variables**:
-- \`weather\`: Current weather ('sunny' or 'rainy')
-- \`distanceKm\`: User's physical distance from the nearest McDonald's branch in kilometers.
+**触发变量**：
+- \`weather\`：当前天气（'sunny' 晴天 / 'rainy' 雨天）
+- \`distanceKm\`：用户距离最近麦当劳门店的物理距离（公里）。
 
-**Hard Rules**:
-1. **Rainy Weather Policy**: If weather is \`rainy\`, ALWAYS recommend **Delivery**. Frame your response around staying warm and dry, mentioning that local delivery riders are fully active.
-2. **Long Distance Policy**: If \`distanceKm\` is greater than **1.5 km**, recommend **Delivery** because of time-saving.
-3. **Sunny & Short Distance Policy**: If weather is \`sunny\` AND \`distanceKm\` is **<= 1.5 km**, recommend **Pickup**. Pitch this as a healthy, active walk that saves the user the delivery fee.
-4. **Delivery Fee Calculation**:
-   - If distance is > 2.0 km, the delivery surcharge is **$4.50**.
-   - If distance is <= 2.0 km, the delivery surcharge is **$2.50**.
-   - Pickup is ALWAYS **$0.00** delivery surcharge.
+**业务硬性规则**：
+1. **雨天推荐政策**：若天气为 \`rainy\`，务必推荐 **外卖配送**。文案应聚焦于“无需出门、温暖干燥”，并说明外卖骑手正全力服务中。
+2. **长距离推荐政策**：若 \`distanceKm\` 大于 **1.5公里**，推荐使用 **外卖配送** 以节省通勤时间。
+3. **晴天短距离推荐政策**：若天气为 \`sunny\` 且 \`distanceKm\` 小于等于 **1.5公里**，推荐 **到店自提**。可以宣传为是一次健康的阳光散步，还能省下外送费。
+4. **外送费计算逻辑**：
+   - 当距离 > 2.0 km 时，外送费为 **$4.50**。
+   - 当距离 <= 2.0 km 时，外送费为 **$2.50**。
+   - 到店自提的外送费永远为 **$0.00**。
 
-**Cooperative MCP Server Tooling**:
-- Inform the user that you will execute \`set_delivery_scenario\` tool with parameters \`{ isDelivery: true/false, surcharge: X.XX }\` to update their actual order draft.`
+**协同 MCP 服务端工具**：
+- 评估完成后，告诉用户你将调用 \`set_delivery_scenario\` 工具（参数 \`{ isDelivery: true/false, surcharge: X.XX }\`）来自动更新他们当前的订单草稿。`
   },
   {
     id: "skill_promotion",
-    title: "Promotion Strategy Handbook",
-    description: "Rules for breakfast vs regular categories, coupon validity, and points exchange policies.",
+    title: "促销与优惠券应用指南",
+    description: "规范早餐与正餐时段的适用范围、优惠券互斥逻辑及会员积分兑换细则。",
     category: "promotion",
-    content: `### PROMOTION STRATEGY & COUPON STACKING POLICY
+    content: `### 促销策略与优惠券叠加使用政策
 
-**Objective**: Analyze the user's shopping cart, active coupons, and point balances to recommend the absolute highest savings option.
+**业务目标**：分析用户购物车商品、已绑定的优惠券及会员积分余额，计算出最省钱的组合。
 
-**Strict Business Logic (Must Be Checked by Agent before calling MCP)**:
-1. **Morning Category Validity**:
-   - Breakfast is active ONLY if time is between **05:00 and 10:30**.
-   - If time is after **10:30 AM**, any breakfast-specific coupon (\`MCD_BREAKFAST_15\`) is **strictly invalid**. Warn the user that the breakfast grill is closed if they attempt to add items.
-2. **Coupon Limitation**:
-   - Coupons are strictly **non-stackable** (only one coupon can be bound to an order).
-   - The system must evaluate which coupon saves the most cash:
-     - \`MCD50\`: $10.00 off if subtotal is >= $50.00.
-     - \`MCD_BREAKFAST_15\`: 15% off only the breakfast items (SKUs starting with \`BRK_\`).
-     - \`MCD_BURGER_20\`: 20% off burger items (Egg McMuffin, Sausage McMuffin, Big Mac, McSpicy).
-3. **Loyalty Reward Exchange**:
-   - If the user has >= **500 points**, they can exchange them for a **FREE Hash Brown** (\`BRK_HASHBROWN\`). This exchange represents a separate reward and can be redeemed in addition to a standard coupon!
+**严格的业务逻辑（Agent 在调用 MCP 前必须核对）**：
+1. **早餐时段有效性**：
+   - 早餐菜单仅在 **05:00 至 10:30** 之间处于激活状态。
+   - 若当前时间晚于 **10:30 AM**，则早餐专享券（\`MCD_BREAKFAST_15\`）**严格失效**。如果用户在此时间后尝试添加早餐单品，需发出“早餐煎炉已关闭”的警示。
+2. **优惠券互斥规则**：
+   - 优惠券**不可叠加**使用（每个订单最多只能绑定一张优惠券）。
+   - 系统需自动计算出最省钱的优惠券方案：
+     - \`MCD50\`：小计金额满 $50.00 立减 $10.00。
+     - \`MCD_BREAKFAST_15\`：仅限早餐类单品（SKU以 \`BRK_\` 开头）享受 85 折。
+     - \`MCD_BURGER_20\`：所有汉堡类商品（吉士蛋麦满分、猪肉满分堡、巨无霸、麦辣鸡腿堡）享受 8 折。
+3. **会员积分兑换奖励**：
+   - 若用户积分达 **500分** 及以上，可申请兑换 **免费脆薯饼** 1个（\`BRK_HASHBROWN\`）。积分兑换属于独立奖励福利，**可与标准优惠券进行叠加**！
 
-**Cooperative MCP Server Tooling**:
-- First evaluate mathematically which coupon saves the most.
-- Call the atomic MCP tool \`bind_coupon(couponCode)\` to commit the coupon to the transaction. Never attempt to manually calculate discounts or override the final price in the order state without calling MCP.`
+**协同 MCP 服务端工具**：
+- 优先在后台进行最优价格的数学计算。
+- 调用原子级 MCP 工具 \`bind_coupon(couponCode)\` 将优惠券绑定至当前交易订单。请勿尝试手动修改总价，一切交由 MCP 事务流计算。`
   },
   {
     id: "skill_pairing",
-    title: "Classic Combo Upsell Template",
-    description: "Upsell rules for classic side and beverage matches, breakfast combos, and nutrition queries.",
+    title: "经典套餐推荐与膳食助手",
+    description: "提供经典配餐组合加购优惠规则、早餐套餐推荐和营养成分查询服务。",
     category: "pairing",
-    content: `### UPSELL PAIRING GUIDE & CALORIE DIETARY ASSISTANT
+    content: `### 套餐搭配指南与卡路里膳食助手
 
-**Objective**: Offer personalized bundle discounts (up to $2.50) and answer dietary queries by combining menu ingredients and nutritional records.
+**业务目标**：根据购物车商品推荐专属套餐组合优惠（最高立减 $2.50），并结合卡路里与营养指标回答膳食健康咨询。
 
-**Combo Bundle Templates**:
-1. **The Morning Starter combo** (Bundle ID: \`BUN_BREAKFAST\`):
-   - Trigger: User has a McMuffin burger in cart.
-   - Upsell target: Suggest adding Hash Brown (\`BRK_HASHBROWN\`) and Roast Coffee (\`BRK_COFFEE\`).
-   - Reward: Bundle deal reduces the total of those three items by a combined **$2.50** (applied as a bundle credit)!
-2. **The Classic Golden Lunch combo** (Bundle ID: \`BUN_LUNCH\`):
-   - Trigger: User has a Big Mac or McSpicy in cart.
-   - Upsell target: Suggest adding Large Fries (\`REG_FRIES\`) and Medium Cola (\`REG_COLA\`).
-   - Reward: Bundle deal reduces total by **$1.50** (applied as a bundle credit)!
+**套餐组合模板**：
+1. **晨光麦满分组合**（组合ID：\`BUN_BREAKFAST\`）：
+   - 触发条件：购物车中已包含麦满分汉堡。
+   - 加购建议：推荐加购 脆薯饼（\`BRK_HASHBROWN\`）和 鲜煮咖啡（\`BRK_COFFEE\`）。
+   - 优惠福利：此套餐组合将使上述三件商品的总价减少 **$2.50**（作为组合优惠直接扣减）！
+2. **经典黄金正餐组合**（组合ID：\`BUN_LUNCH\`）：
+   - 触发条件：购物车中已包含巨无霸汉堡或麦辣鸡腿堡。
+   - 加购建议：推荐加购 经典薯条（\`REG_FRIES\`）和 中杯可乐（\`REG_COLA\`）。
+   - 优惠福利：此套餐组合将使总价减少 **$1.50**（作为组合优惠直接扣减）！
 
-**Nutritional Query Guidance**:
-- If user asks about calorie restrictions, high-protein options, or fat macros:
-  - Run MCP tool \`list_nutrition\` to fetch real-time nutritional metrics.
-  - Summarize the totals cleanly (e.g. "Your total breakfast combo has 455 calories and 18g of protein").`
+**营养查询服务**：
+- 当用户询问卡路里限制、高蛋白食物推荐或脂肪等宏量营养素指标时：
+  - 调用 MCP 工具 \`list_nutrition\` 获取实时营养学档案。
+  - 简洁明了地汇总各项指标（如：“您的晨光套餐共包含 455 卡路里热量和 18 克蛋白质”）。`
   },
   {
     id: "skill_payment",
-    title: "Payment Instruction Wrapper",
-    description: "Strict instructions to lock order state, create a secure deep link and format payment cards.",
+    title: "安全交易与支付引导规范",
+    description: "严格规范订单锁定、库存校验、生成安全跳转深层链接及格式化支付卡的流程。",
     category: "payment",
-    content: `### SECURE PAYMENT FLOW & UNIVERSAL APP-LINK WRAPPER
+    content: `### 安全交易流程与万能 APP 支付链接引导
 
-**Objective**: Seamlessly bridge the checkout gap by generating high-intent payment deep links and visual guides without capturing customer financial details.
+**业务目标**：在不直接获取用户敏感支付卡信息的情况下，生成高转化率的支付跳转深层链接与可视化向导，实现安全闭环。
 
-**Transaction Pipeline Steps**:
-1. **Lock State**: Once the user says "Ready to checkout" or confirms the draft, immediately invoke MCP tool \`lock_order()\` to freeze price and reserve store inventory.
-2. **Create Transaction**: Invoke MCP tool \`create_order()\` to generate the final order UUID, calculating finalized taxes and fees.
-3. **App-Jump Deep Link**: Wrap the order ID into a simulated Universal Deep Link card:
-   - Deep Link URL: \`mcdonalds://pay?orderId={ORDER_ID}&price={TOTAL}\`
-   - Prompt the user with a distinct visual button/card "Pay with Mobile App".
-4. **Humanized Instructions**:
-   - State that clicking the button launches the McDonald's App where they can finalize with Apple Pay, Google Pay or linked cards in 1 tap.
-   - Copyable **Pickup Code** (e.g., \`MCD-9482\`) or **Delivery Progress Estimated Arrival** (e.g., 25 mins) must be clearly printed.
+**交易流程步骤**：
+1. **锁定状态**：一旦用户提出“结账”、“去支付”或确认当前草稿，立即调用 MCP 工具 \`lock_order()\` 冻结订单价格并锁定门店库存。
+2. **创建交易**：调用 MCP 工具 \`create_order()\` 生成唯一的最终订单 UUID，计算并确认税费。
+3. **App 支付跳转**：将订单 ID 和总价封装成万能 App 深层链接支付卡：
+   - 支付深层链接：\`mcdonalds://pay?orderId={ORDER_ID}&price={TOTAL}\`
+   - 在聊天界面中呈现一个极其醒目的交互式按钮“使用手机 App 支付”。
+4. **人性化指引**：
+   - 告知用户点击此按钮即可调起麦当劳手机客户端，支持通过 Apple Pay、Google Pay 或绑定的信用卡一键支付。
+   - 附带提供可复制的 **取餐码**（例如：\`MCD-9482\`）或外卖配送的**预计送达时间**（例如：25分钟）。
 
-**Security Mandate**:
-- Never generate mock transaction forms or input fields for Credit Card / CVV numbers in your chat interface. This is a severe security violation. Trust the backend MCP transaction pipeline.`
+**安全硬性规范**：
+- 严禁在聊天界面中生成收集信用卡卡号、过期时间、CVV 等敏感信息的模拟表单，这属于严重安全违规行为。必须充分信任并调用后台 MCP 交易链路。`
   }
 ];

@@ -12,6 +12,7 @@ import { CartSummary } from "./components/CartSummary";
 import { McpConsole } from "./components/McpConsole";
 import { SkillsManager } from "./components/SkillsManager";
 import { AgentChat } from "./components/AgentChat";
+import { BusinessGuide } from "./components/BusinessGuide";
 import { Flame, Brain, Server, Landmark, Sparkles, Star, Github } from "lucide-react";
 
 export default function App() {
@@ -390,6 +391,60 @@ export default function App() {
     setLogs([]);
   };
 
+  const handleApplyPreset = (preset: {
+    env?: Partial<Environment>;
+    itemsToCart?: { sku: string; quantity: number }[];
+    couponCode?: string;
+    chatText?: string;
+    logMessage?: string;
+  }) => {
+    // 1. Set environment if provided
+    if (preset.env) {
+      setEnv(prev => ({ ...prev, ...preset.env }));
+    }
+
+    // 2. Clear then add items to cart if provided
+    if (preset.itemsToCart) {
+      const newCartItems = preset.itemsToCart.map(p => {
+        const item = MENU_ITEMS.find(m => m.sku === p.sku);
+        return item ? { item, quantity: p.quantity } : null;
+      }).filter(Boolean) as { item: MenuItem; quantity: number }[];
+
+      setOrderState(prev => ({
+        ...prev,
+        status: "draft",
+        items: newCartItems,
+        appliedCoupon: null
+      }));
+    }
+
+    // 3. Apply coupon if provided
+    if (preset.couponCode) {
+      setTimeout(() => {
+        handleApplyCoupon(preset.couponCode!);
+      }, 80);
+    }
+
+    // 4. Log system warning
+    if (preset.logMessage) {
+      triggerMcpLog(
+        "preset_autopilot",
+        preset.env || {},
+        { success: true },
+        "warning",
+        preset.logMessage,
+        "read"
+      );
+    }
+
+    // 5. Send message if provided
+    if (preset.chatText) {
+      setTimeout(() => {
+        handleSendMessage(preset.chatText!);
+      }, 200);
+    }
+  };
+
   // 4. Send Message to Full-Stack AI Agent (Gemini)
   const handleSendMessage = async (text: string) => {
     const userMsg: ChatMessage = {
@@ -453,7 +508,7 @@ export default function App() {
         {
           id: "err_" + Date.now(),
           sender: "system",
-          text: `Connection Sidetracked: ${err?.message || "Verify your connection or API configuration."}`,
+          text: `智能服务连接受阻: ${err?.message || "请确认您的网络连接或 API 配置是否正常。"}`,
           timestamp: new Date().toLocaleTimeString()
         }
       ]);
@@ -472,15 +527,15 @@ export default function App() {
               <span className="text-white font-black text-xl italic font-display">M</span>
             </div>
             <div>
-              <h1 className="text-base md:text-lg font-bold tracking-tight text-slate-900 leading-none">McAgent Orchestrator v2.4.0</h1>
-              <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-widest mt-1">Architecture: Skill-Driven / MCP-Executed</p>
+              <h1 className="text-base md:text-lg font-bold tracking-tight text-slate-900 leading-none">McAgent 麦当劳智能订餐调度系统 v2.4.0</h1>
+              <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-widest mt-1">系统架构：AI 业务规则驱动 / MCP 事务执行</p>
             </div>
           </div>
           
           <div className="flex items-center space-x-4">
             <div className="hidden sm:flex items-center space-x-2 bg-green-50 px-3 py-1.5 rounded-full border border-green-200">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-[10px] font-bold text-green-700 tracking-wide uppercase">MCP Node: CF-Worker-South-1 (Online)</span>
+              <span className="text-[10px] font-bold text-green-700 tracking-wide uppercase">MCP 节点：CF-Worker-South-1 (正常在线)</span>
             </div>
             <div className="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center font-mono text-[11px] font-bold text-slate-700 shadow-xs">
               MCD
@@ -494,6 +549,15 @@ export default function App() {
         
         {/* Left 7 Columns: Skills manager, Chat & Menu */}
         <div className="lg:col-span-8 space-y-6">
+          
+          {/* Section 0: Interactive Business Operations Playbook */}
+          <section id="business-guide-section">
+            <BusinessGuide
+              onApplyPreset={handleApplyPreset}
+              isBreakfast={isBreakfast}
+              env={env}
+            />
+          </section>
           
           {/* Section 1: Brain Skills Manager */}
           <section id="skills-section">
@@ -574,10 +638,10 @@ export default function App() {
       {/* Footer Branding */}
       <footer className="max-w-7xl mx-auto px-6 mt-12 text-center text-xs text-slate-400 space-y-2 border-t border-slate-200/60 pt-6">
         <p className="flex items-center justify-center gap-1">
-          <Sparkles className="w-3.5 h-3.5 text-brand-gold fill-brand-gold/20" /> McDonald's Agent Microservices System. Crafted with React, Vite & Google Gemini API.
+          <Sparkles className="w-3.5 h-3.5 text-blue-600 fill-blue-600/10" /> 麦当劳 AI 智脑微服务点餐系统。基于 React, Vite & Google Gemini API 构建。
         </p>
         <p className="text-[10px]">
-          Simulating durable cloud orchestration of Cloudflare worker server endpoints. Safe Sandboxed Environment.
+          正在模拟 Cloudflare Worker 服务器端点的云端事务流。高安全分布式沙箱隔离环境。
         </p>
       </footer>
     </div>

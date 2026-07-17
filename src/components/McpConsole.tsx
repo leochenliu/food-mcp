@@ -28,7 +28,7 @@ export const McpConsole: React.FC<McpConsoleProps> = ({ logs, onClearLogs }) => 
       <div className="bg-slate-900 border-b border-slate-800 px-4 py-3 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-2">
           <Terminal className="w-4 h-4 text-pink-500 animate-pulse" />
-          <span className="font-mono text-xs font-semibold text-slate-300">MCP Server Transaction Layer</span>
+          <span className="font-mono text-xs font-semibold text-slate-300">MCP 服务端事务处理层</span>
         </div>
         
         <div className="flex items-center gap-2">
@@ -38,10 +38,10 @@ export const McpConsole: React.FC<McpConsoleProps> = ({ logs, onClearLogs }) => 
               className="text-slate-500 hover:text-slate-300 transition text-[10px] font-mono px-2 py-0.5 rounded border border-slate-800 hover:bg-slate-800 cursor-pointer"
               id="clear-mcp-logs-btn"
             >
-              Clear Logs
+              清空日志
             </button>
           )}
-          <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50 animate-pulse" title="MCP Server online"></span>
+          <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50 animate-pulse" title="MCP 服务端正常在线"></span>
         </div>
       </div>
 
@@ -56,7 +56,7 @@ export const McpConsole: React.FC<McpConsoleProps> = ({ logs, onClearLogs }) => 
                 : "text-slate-400 hover:text-slate-200 hover:bg-slate-900"
             }`}
           >
-            ● LIVE STREAM
+            ● 实时日志流
           </button>
           <button
             onClick={() => setActiveTab("registry")}
@@ -66,10 +66,10 @@ export const McpConsole: React.FC<McpConsoleProps> = ({ logs, onClearLogs }) => 
                 : "text-slate-400 hover:text-slate-200 hover:bg-slate-900"
             }`}
           >
-            📊 TOOL REGISTRY
+            📊 工具注册表
           </button>
         </div>
-        <div className="text-slate-500 text-[9px]">Latency: ~18ms</div>
+        <div className="text-slate-500 text-[9px]">网络延迟: ~18ms</div>
       </div>
 
       {/* Dynamic Content Frame */}
@@ -81,9 +81,9 @@ export const McpConsole: React.FC<McpConsoleProps> = ({ logs, onClearLogs }) => 
               <div className="h-full flex flex-col items-center justify-center text-slate-600 space-y-3 text-center py-10">
                 <Cpu className="w-8 h-8 opacity-45 text-pink-500 animate-pulse" />
                 <div className="space-y-1">
-                  <p className="text-[11px] font-semibold text-slate-400">Execution Pipeline Standing By</p>
+                  <p className="text-[11px] font-semibold text-slate-400">事务执行流水线就绪</p>
                   <p className="text-[9px] max-w-xs opacity-75 mx-auto leading-relaxed">
-                    Trigger items, coupons, or chat dialog to route transactions securely via decoupled Cloudflare Worker limbs.
+                    请在下方菜单加购商品、绑定优惠券，或通过 AI 智能客服对话，触发由分布式 Cloudflare Worker 执行的底层系统接口！
                   </p>
                 </div>
               </div>
@@ -108,11 +108,11 @@ export const McpConsole: React.FC<McpConsoleProps> = ({ logs, onClearLogs }) => 
                         <div className="flex items-center gap-1.5">
                           <span className="text-slate-600">[{log.timestamp}]</span>
                           <span className={`px-1.5 py-0.5 rounded border font-bold text-[8px] uppercase tracking-wider ${badgeColor}`}>
-                            {log.type}
+                            {log.type === "transaction" ? "支付事务" : "系统规则"}
                           </span>
                         </div>
                         <span className={`font-semibold ${statusColor}`}>
-                          ● {log.status.toUpperCase()}
+                          ● {log.status === "success" ? "执行成功" : log.status === "warning" ? "系统警示" : "执行中止"}
                         </span>
                       </div>
 
@@ -127,7 +127,7 @@ export const McpConsole: React.FC<McpConsoleProps> = ({ logs, onClearLogs }) => 
                       </div>
 
                       <div className="bg-slate-900/85 p-2.5 rounded-lg border border-slate-800/80 text-[10px] text-slate-400 max-h-36 overflow-x-auto whitespace-pre font-mono">
-                        <span className="text-slate-500 block text-[8px] uppercase tracking-wider mb-1">Response Payload:</span>
+                        <span className="text-slate-500 block text-[8px] uppercase tracking-wider mb-1">返回载荷数据 (Response Payload):</span>
                         {JSON.stringify(log.result, null, 2)}
                       </div>
                     </div>
@@ -141,47 +141,47 @@ export const McpConsole: React.FC<McpConsoleProps> = ({ logs, onClearLogs }) => 
           /* Static Registered Tools table from "Professional Polish" design HTML */
           <div className="flex-1 overflow-y-auto">
             <div className="p-3 bg-slate-900 border-b border-slate-800 flex justify-between items-center px-4">
-              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-bold">Registered Executions</span>
-              <span className="text-[9px] px-1.5 py-0.5 bg-slate-800 border border-slate-700 text-slate-400 rounded font-mono">Source: server.ts</span>
+              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-bold">受控的注册接口</span>
+              <span className="text-[9px] px-1.5 py-0.5 bg-slate-800 border border-slate-700 text-slate-400 rounded font-mono">来源: server.ts</span>
             </div>
             <table className="w-full text-left font-mono text-[11px]">
               <thead className="bg-slate-950 border-b border-slate-800 sticky top-0 text-slate-500">
                 <tr>
-                  <th className="px-4 py-2 text-[9px] font-bold uppercase">Tool ID</th>
-                  <th className="px-4 py-2 text-[9px] font-bold uppercase">Constraint Responsibility</th>
-                  <th className="px-4 py-2 text-[9px] font-bold uppercase text-right">State Guard</th>
+                  <th className="px-4 py-2 text-[9px] font-bold uppercase">工具名称 (Tool ID)</th>
+                  <th className="px-4 py-2 text-[9px] font-bold uppercase">业务限制约束与核心职责</th>
+                  <th className="px-4 py-2 text-[9px] font-bold uppercase text-right">状态保护级别</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-900 text-slate-300">
                 <tr>
                   <td className="px-4 py-2.5 text-pink-400 font-bold">create_order</td>
-                  <td className="px-4 py-2.5 text-slate-400 italic">Strict Worker transaction commit; reserves inventory</td>
-                  <td className="px-4 py-2.5 text-right text-emerald-400 font-bold text-[9px]">PROTECTED</td>
+                  <td className="px-4 py-2.5 text-slate-400 italic">严格的 Worker 事务提交，原子性冻结门店库存并扣除货品</td>
+                  <td className="px-4 py-2.5 text-right text-emerald-400 font-bold text-[9px]">🔐 受保护 (PROTECTED)</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 text-pink-400 font-bold">bind_coupon</td>
-                  <td className="px-4 py-2.5 text-slate-400 italic">Validates specific ID constraints against order draft</td>
-                  <td className="px-4 py-2.5 text-right text-indigo-400 font-bold text-[9px]">ATOMIC</td>
+                  <td className="px-4 py-2.5 text-slate-400 italic">核对并向当前购物车订单草稿绑定优惠券，防止不当溢减</td>
+                  <td className="px-4 py-2.5 text-right text-indigo-400 font-bold text-[9px]">⚙️ 原子操作 (ATOMIC)</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 text-pink-400 font-bold">add_item_to_cart</td>
-                  <td className="px-4 py-2.5 text-slate-400 italic">Verifies grill status and registers item counts</td>
-                  <td className="px-4 py-2.5 text-right text-indigo-400 font-bold text-[9px]">ATOMIC</td>
+                  <td className="px-4 py-2.5 text-slate-400 italic">核验后厨铁板开启状态（早餐/正餐时段），并修改购物车商品</td>
+                  <td className="px-4 py-2.5 text-right text-indigo-400 font-bold text-[9px]">⚙️ 原子操作 (ATOMIC)</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 text-pink-400 font-bold">redeem_points_hashbrown</td>
-                  <td className="px-4 py-2.5 text-slate-400 italic">Verifies user loyalty ledger balance & adds reward</td>
-                  <td className="px-4 py-2.5 text-right text-emerald-400 font-bold text-[9px]">PROTECTED</td>
+                  <td className="px-4 py-2.5 text-slate-400 italic">原子性验证并扣减会员积分，赠送对应的免费脆薯饼</td>
+                  <td className="px-4 py-2.5 text-right text-emerald-400 font-bold text-[9px]">🔐 受保护 (PROTECTED)</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 text-pink-400 font-bold">lock_order</td>
-                  <td className="px-4 py-2.5 text-slate-400 italic">Freezes draft parameters prior to final checkout</td>
-                  <td className="px-4 py-2.5 text-right text-indigo-400 font-bold text-[9px]">ATOMIC</td>
+                  <td className="px-4 py-2.5 text-slate-400 italic">冻结当前购物车所有草稿参数（价格、距离等），防范提示词篡改攻击</td>
+                  <td className="px-4 py-2.5 text-right text-indigo-400 font-bold text-[9px]">⚙️ 原子操作 (ATOMIC)</td>
                 </tr>
               </tbody>
             </table>
             <div className="p-3 bg-slate-900/40 text-[9px] text-slate-500 border-t border-slate-900 italic text-center">
-              🛡️ Transaction layer isolates database access from AI prompt modifications.
+              🛡️ MCP 事务隔离层将底层数据库和关键交易逻辑进行了严格隔离，杜绝任何外部 AI 提问文本对核心支付数据的篡改和干涉。
             </div>
           </div>
         )}
