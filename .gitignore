@@ -6,3 +6,8 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Wrangler / Cloudflare 构建与运行时产物（不应提交）
+.wrangler/
+*.err
+*.resp
